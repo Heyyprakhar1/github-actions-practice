@@ -1,22 +1,27 @@
 name: Hello Workflow
 on:
-    workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "**.yml"
+  workflow_dispatch:
+
 jobs:
-    greet:
-        runs-on: ubuntu-latest
-        steps:
-            - name: checkout code
-              uses: actions/checkout@v4
-            - name: says hello
-              run: echo "Hello from GitHub Actions!"
-    timestamp:
-        runs-on: ubuntu-latest
-        steps:
-            - name: checks the time & date
-              run: date
-            - name: branch name
-              run: echo "Current branch is ${{ github.ref }}"
-            - name: list the files in the repo
-              run: ls -la
-            - name: prints the runner's OS
-              run: echo "Running on ${{ runner.os }}"
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: says hello
+        run: echo "Hello from GitHub Actions!"
+  timestamp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checks the time & date
+        run: date
+      - name: branch name
+        run: echo "Current branch is ${{ github.ref }}"
+      - name: list the files in the repo
+        run: ls -la
+      - name: prints the runner's OS
+        run: echo "Running on ${{ runner.os }}"
