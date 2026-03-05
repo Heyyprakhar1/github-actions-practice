@@ -5,11 +5,12 @@ on:
       environment:
         description: "This job should run only on the timestamp"
         required: true
-        default: "timestamp"
+        default: greet
         type: choice
         options:
           - greet
           - timestamp
+          - default
 
 jobs:
   greet:
