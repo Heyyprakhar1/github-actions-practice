@@ -3,8 +3,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "**.yml"
-  workflow_dispatch:
+      - "**.md"
 
 jobs:
   greet:
