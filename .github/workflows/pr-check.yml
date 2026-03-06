@@ -1,15 +1,22 @@
-name: pr-check
+name: PR Check
+
 on:
     pull_request:
-        branches: [main]
+        branches:
+            - main # Only fires when the PR target is `main`
         types:
-            - opened # PR opened
-            - synchronize # New commit pushed to PR branch
+            - opened # PR just created
+            - synchronize # New commit pushed to the PR branch
+
 jobs:
-    pull-Request:
+    pr-check:
+        name: Run PR Checks
         runs-on: ubuntu-latest
+
         steps:
-            - name: PR check
-              run: echo "PR check completed successfully from branch ${{ github.head_ref }}"
-            - name: checkout code # once at the top, all steps below have the code
+            - name: Checkout code
               uses: actions/checkout@v4
+
+            - name: Print branch name
+              run: |
+                  echo "PR check running for branch: ${{ github.head_ref }}"
