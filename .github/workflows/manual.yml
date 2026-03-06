@@ -13,6 +13,7 @@ on:
 jobs:
     manual-deploy:
         runs-on: ubuntu-latest
+        if: ${{ github.event.inputs.environment == 'staging' }}
         steps:
             - name: Manual deployment
               run: echo "Deploying to ${{ github.event.inputs.environment }} environment!"
