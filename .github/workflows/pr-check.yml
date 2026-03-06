@@ -1,0 +1,15 @@
+name: pr-check
+on:
+    pull_request:
+        branches: [main]
+        types:
+            - opened # PR opened
+            - synchronize # New commit pushed to PR branch
+jobs:
+    pull-Request:
+        runs-on: ubuntu-latest
+        steps:
+            - name: PR check
+              run: echo "PR check completed successfully from branch ${{ github.head_ref }}"
+            - name: checkout code # once at the top, all steps below have the code
+              uses: actions/checkout@v4
