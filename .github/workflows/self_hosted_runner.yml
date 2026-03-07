@@ -1,0 +1,14 @@
+name: self-hosted-runner
+on:
+    push:
+        branches: [daily-assignemnt]
+jobs:
+    print-runner-labels:
+        runs-on: ["ubuntu-latest", "windows-latest", "macos-latest"]
+        steps:
+            - name: print OS name
+              run: echo "Running on $RUNNER_OS"
+            - name: print $RUNNER_HOSTNAME
+              run: echo "Running on $RUNNER_HOSTNAME"
+            - name: The current user running the job
+              run: echo "Running as $RUNNER_USER"
