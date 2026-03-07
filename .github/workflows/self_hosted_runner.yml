@@ -4,7 +4,7 @@ on:
         branches: [main]
 jobs:
     print-runner-labels:
-        runs-on: ${{matrix.os}}
+        runs-on: ${{ matrix.os }}
         strategy:
           matrix:
             include:
