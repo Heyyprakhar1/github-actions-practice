@@ -1,0 +1,16 @@
+name: python-lint
+on: 
+  push:
+    branches: [main]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout-code
+        uses: actions/checkout@v4
+      - name: setup-python
+        uses: actions/setup-python@v5
+      - name: installing dependencies
+        run: pip install -r requirements.txt
+      - name: linting Python code
+        run: flake8 app.py
