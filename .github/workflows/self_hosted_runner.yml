@@ -1,17 +1,43 @@
-name: self-hosted-runner
+name: multi-os-runner
 on:
     push:
         branches: [main]
 jobs:
-    print-runner-labels:
-        runs-on: ${{ matrix.os }}
-        strategy:
-          matrix:
-              os: [ubuntu-latest, windows-latest, macos-latest]
+    ubuntu-job:
+        runs-on: ubuntu-latest
         steps:
-            - name: print OS name
+            - name: Print OS name
               run: echo "Running on $RUNNER_OS"
-            - name: print $RUNNER_HOSTNAME
-              run: echo "Running on $RUNNER_HOSTNAME"
-            - name: The current user running the job
-              run: echo "Running as $RUNNER_USER"
+
+            - name: Print hostname
+              run: echo "Hostname is $RUNNER_NAME"
+
+            - name: Print current user
+              run: echo "Running as $USER"
+
+            - name: prints the packages
+              run: docker --version && python --version && node --version && git --version
+
+    windows-job:
+        runs-on: windows-latest
+        steps:
+            - name: Print OS name
+              run: echo "Running on $env:RUNNER_OS"
+
+            - name: Print hostname
+              run: echo "Hostname is $env:RUNNER_NAME"
+
+            - name: Print current user
+              run: echo "Running as $env:USERNAME"
+
+    macos-job:
+        runs-on: macos-latest
+        steps:
+            - name: Print OS name
+              run: echo "Running on $RUNNER_OS"
+
+            - name: Print hostname
+              run: echo "Hostname is $RUNNER_NAME"
+
+            - name: Print current user
+              run: echo "Running as $USER"
