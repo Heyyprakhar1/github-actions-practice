@@ -1,0 +1,14 @@
+name: Scheduled Job
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+    - cron: 0 9 * * 1  
+
+jobs:
+  schedule-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print message
+        run: echo "Scheduled workflow running at midnight UTC"
