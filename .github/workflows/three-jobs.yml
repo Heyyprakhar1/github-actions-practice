@@ -1,0 +1,36 @@
+name: three-job
+on:
+  workflow_dispatch:
+
+jobs:
+  ubuntu-jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: prints OS
+        run: uname -a
+      - name: runners Hostname
+        run: hostname -I
+      - name: current user
+        run: echo $USER 
+      - name: prints the dependencies version
+        run: docker --version && python --version && node --version && git --version
+  windows-jobs:
+    runs-on: windows-latest
+    steps:
+      - name: prints OS
+        run: systeminfo
+      - name: runners Hostname
+        run: hostname
+      - name: current user
+        run: echo $USER
+
+  macos-jobs:
+      runs-on: macos-latest
+      steps:
+        - name: prints OS
+          run: uname -a
+        - name: runners Hostname
+          run: hostname
+        - name: current user
+          run:  echo $USER
+    
