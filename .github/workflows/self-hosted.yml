@@ -1,0 +1,17 @@
+name: self-hosted
+on:
+  push: 
+      branches: [main]
+
+jobs: 
+  self-hosted:
+    runs-on: [self-hosted, my-linux-runner]
+    steps:
+      - name: prints the hostname of the VM
+        run: echo $HOSTNAME
+      - name: prints the working-directory
+        run: pwd
+      - name: creating a file
+        run: touch file1.txt  
+      - name: verifying if the file exists
+        run: cat file1.txt
