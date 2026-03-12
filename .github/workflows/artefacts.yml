@@ -11,4 +11,4 @@ jobs:
       - name: checking the syntax
         run: flake8 app.py
       - name: artefacts
-        uses: actions/upload-artifacts@v4
+        uses: actions/upload-artifact@v4
