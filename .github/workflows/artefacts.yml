@@ -8,7 +8,14 @@ jobs:
     steps:
       - name: checkout the code
         uses: actions/checkout@v4
-      - name: checking the syntax
+      - name: installing pip-audit
+        run: pip install pip-audit
+
+      - name: running pip-audit
+        run: pip-audit -r requirements.txt
+
+      - name: check the syntaxes
         run: flake8 app.py
+
       - name: artefacts
         uses: actions/upload-artifact@v4
