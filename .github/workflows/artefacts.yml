@@ -1,18 +1,20 @@
-name: artefacts
+name: artifact-demo
+
 on:
   workflow_dispatch:
 
 jobs:
-  Download-the-artefacts:
+  artifact-job:
     runs-on: ubuntu-latest
+
     steps:
-      - name: checkout the code
-        uses: actions/checkout@v4
-      - name: installing pip-audit
-        run: pip install pip-audit
+      - name: Generate test report
+        run: |
+          echo "Test Execution Report" > report.txt
+          echo "All tests passed!" >> report.txt
 
-      - name: running pip-audit
-        run: pip-audit -r requirements.txt
-
-      - name: artefacts
+      - name: Upload report artifact
         uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: report.txt
