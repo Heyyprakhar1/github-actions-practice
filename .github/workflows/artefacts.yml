@@ -1,0 +1,14 @@
+name: artefacts
+on:
+  workflow_dispatch:
+
+jobs: 
+  Download-the-artefacts:
+      runs-on: ubuntu-latest
+      steps:
+        - name: checkout the code
+          uses: actions/checkout@v4
+        - name: checking the syntax 
+          run: flake8 app.py
+        -  name: artefacts-shows
+           uses: actions/upload-artefacts@v4
