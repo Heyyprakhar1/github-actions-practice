@@ -17,4 +17,4 @@ jobs:
           python-version: "3.11"
 
       - name: Run Test Script
-        run: python github-actions-practice/test_script.py
+        run: python test_script.py
